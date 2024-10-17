@@ -1,8 +1,8 @@
 import pygame
-import Utility.Utility as Utility
+from Utility.Utility import GRAPH
 
 INFINITE = 10**100
-VERTEX = len(Utility.VERTEX)
+VERTEX = len(GRAPH.MATRIX)
 
 def MinimumDistance(distance, processed):
     MIN = INFINITE
@@ -32,10 +32,11 @@ def Dijkstra(GRAPH, source):
 
     return parent
 
+parent = Dijkstra(GRAPH.MATRIX, 0)
 
-def Display(SCREEN, parent, destination):
-
+def Display(SCREEN, destination):
     if parent[destination] == -1:
         return
-    pygame.draw.line(SCREEN, (0,200,0),Utility.VERTEX[destination], Utility.VERTEX[parent[destination]],5)
-    Display(SCREEN, parent, parent[destination])
+    pygame.draw.line(SCREEN, (0,200,0),GRAPH.VERTEX_COORDINATE[destination], GRAPH.VERTEX_COORDINATE[parent[destination]],5)
+    Display(SCREEN, parent[destination])
+

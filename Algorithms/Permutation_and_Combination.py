@@ -1,4 +1,5 @@
 import pygame
+from Utility.Utility import Fruit
 
 Permutation_Result = []
 Combination_Result = []
@@ -6,7 +7,8 @@ Combination_Result = []
 def Swap(items, a, b):
     items[a], items[b] = items[b], items[a]
 
-x = 0
+x = 0 # this X is used to shift image to the right while displaying them using the Display function below
+
 def Display(items, screen):
     global x
     y = 0
@@ -34,6 +36,8 @@ def Permutation(left, right, items): # left index, right index[last index]
             # swap index i and left again
             Swap(items, left, i)
 
+Permutation(0,3,Fruit)
+
 def Combination(items, array, number, start, end, index):
     if index == number:
         Combination_Result.append(array[:])
@@ -43,3 +47,8 @@ def Combination(items, array, number, start, end, index):
         if (end - i) >= number - index:
             array[index] = items[i]
             Combination(items, array, number, i + 1, end, index + 1)
+
+number = 2
+data = [0] * number
+
+Combination(Fruit, data, number, 0, 4, 0)

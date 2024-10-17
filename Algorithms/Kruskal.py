@@ -1,7 +1,7 @@
-import Utility.Utility as Utility
+from Utility.Utility import MST_GRAPH, GRAPH
 import pygame
 
-VERTEX = len(Utility.MST_GRAPH)
+VERTEX = len(MST_GRAPH)
 
 parent = [i for i in range(VERTEX)]
 rank = [0] * VERTEX
@@ -41,6 +41,8 @@ def KruskalMST(GRAPH):
 
     return Minimum_Spanning_Tree
 
-def Display(MST, SCREEN):
+MST = KruskalMST(MST_GRAPH)
+
+def Display(SCREEN):
     for edge in MST:
-        pygame.draw.line(SCREEN, (0,200,0), Utility.VERTEX[edge[0]], Utility.VERTEX[edge[1]], 5)
+        pygame.draw.line(SCREEN, (0,200,0), GRAPH.VERTEX_COORDINATE[edge[0]], GRAPH.VERTEX_COORDINATE[edge[1]], 5)
