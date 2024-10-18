@@ -1,10 +1,12 @@
 from collections import deque
 import pygame
-from Utility.Utility import GRAPH
+from Utility.Utility import GRAPH2
 
+GRAPH = GRAPH2
 VERTEX = GRAPH.VERTEX_COORDINATE
 
 DFS = []
+BFS = []
 
 def Depth_First_Search(GRAPH, visited, start): # Depth_First_Search is also called "Backtracking" Recursive Version
     visited[start] = True
@@ -15,16 +17,11 @@ def Depth_First_Search(GRAPH, visited, start): # Depth_First_Search is also call
             Depth_First_Search(GRAPH, visited, i)
 
 visited = [False]*len(VERTEX)
+
 Depth_First_Search(GRAPH.MATRIX, visited, 2)
 
-def Display(screen): # Display Function for Depth_First_Search, Because it is Recursive
-    for vertex in DFS:
-        pygame.draw.line(screen, (0,200,0), VERTEX[vertex[0]], VERTEX[vertex[1]], 5)
-
-
-def Breadth_First_Search(start ,screen, GRAPH = GRAPH.MATRIX):
+def Breadth_First_Search(start, GRAPH):
     visited = [False] * len(GRAPH)
-    color = 0
     queue = deque([start])
     visited[start] = True
 
@@ -33,7 +30,12 @@ def Breadth_First_Search(start ,screen, GRAPH = GRAPH.MATRIX):
         
         for i in range(len(GRAPH)):
             if GRAPH[vertex][i] != 0 and not visited[i]:
-                pygame.draw.line(screen, (0,200,color), VERTEX[vertex], VERTEX[i],5)
+                BFS.append([vertex, i])
                 queue.append(i)
                 visited[i] = True
-        color += 30
+
+Breadth_First_Search(2, GRAPH.MATRIX)
+
+def Display(screen, List): # Display Function for Depth_First_Search, Because it is Recursive
+    for vertex in List:
+        pygame.draw.line(screen, GRAPH.PATH_HIGHLIGHT_COLOR, VERTEX[vertex[0]], VERTEX[vertex[1]], 5)

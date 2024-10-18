@@ -55,10 +55,12 @@ class Graph:
                     if show_Weight:
                         x = (self.VERTEX_COORDINATE[i][0] + self.VERTEX_COORDINATE[j][0])/2
                         y = (self.VERTEX_COORDINATE[i][1] + self.VERTEX_COORDINATE[j][1])/2
-                        Screen.Text(f"{self.MATRIX[i][j]}", 25, (0,0,0), x+15, y-25)
+                        Screen.Text(f"{self.MATRIX[i][j]}", 25, (0,0,0), x-15, y-15)
 
-GRAPH = Graph("Graph", "Vertex", (100,100,255), (0,255,0), (0,0,0))
-MST_GRAPH = getData("MST_GRAPH")
+GRAPH1 = Graph("Graph1", "Vertex1", (100,100,255), (0,255,0), (0,0,0))
+GRAPH2 = Graph("Graph2", "Vertex2", (100,100,255), (0,255,0), (0,0,0))
+MST_GRAPH1 = getData("MST_GRAPH1")
+MST_GRAPH2 = getData("MST_GRAPH2")
 
 class Button:
     def __init__(self, Name, x, y, Color):

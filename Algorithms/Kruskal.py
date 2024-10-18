@@ -1,5 +1,8 @@
-from Utility.Utility import MST_GRAPH, GRAPH
+from Utility.Utility import MST_GRAPH2, GRAPH2
 import pygame
+
+GRAPH = GRAPH2
+MST_GRAPH = MST_GRAPH2
 
 VERTEX = len(MST_GRAPH)
 
@@ -45,4 +48,4 @@ MST = KruskalMST(MST_GRAPH)
 
 def Display(SCREEN):
     for edge in MST:
-        pygame.draw.line(SCREEN, (0,200,0), GRAPH.VERTEX_COORDINATE[edge[0]], GRAPH.VERTEX_COORDINATE[edge[1]], 5)
+        pygame.draw.line(SCREEN, GRAPH.PATH_HIGHLIGHT_COLOR, GRAPH.VERTEX_COORDINATE[edge[0]], GRAPH.VERTEX_COORDINATE[edge[1]], 5)

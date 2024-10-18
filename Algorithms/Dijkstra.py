@@ -1,7 +1,8 @@
 import pygame
-from Utility.Utility import GRAPH
+from Utility.Utility import GRAPH2
 
-INFINITE = 10**100
+INFINITE = float('INF')
+GRAPH = GRAPH2
 VERTEX = len(GRAPH.MATRIX)
 
 def MinimumDistance(distance, processed):
@@ -37,6 +38,6 @@ parent = Dijkstra(GRAPH.MATRIX, 0)
 def Display(SCREEN, destination):
     if parent[destination] == -1:
         return
-    pygame.draw.line(SCREEN, (0,200,0),GRAPH.VERTEX_COORDINATE[destination], GRAPH.VERTEX_COORDINATE[parent[destination]],5)
+    pygame.draw.line(SCREEN, GRAPH.PATH_HIGHLIGHT_COLOR, GRAPH.VERTEX_COORDINATE[destination], GRAPH.VERTEX_COORDINATE[parent[destination]],5)
     Display(SCREEN, parent[destination])
 

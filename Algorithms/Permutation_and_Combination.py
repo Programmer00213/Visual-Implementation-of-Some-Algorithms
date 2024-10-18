@@ -11,16 +11,16 @@ x = 0 # this X is used to shift image to the right while displaying them using t
 
 def Display(items, screen):
     global x
-    y = 0
+    y = 100
     n = 0
     for item in items:
         for fruits in item:
             resized = pygame.transform.scale(fruits, (50,50))
             screen.blit(resized, (x, y))
-            x += 80
-        x = 400 * n
+            x += 60
+        x = 50 + 330 * n
         if(y > 600): 
-            y = 0
+            y = 100
             n += 1
         else:
             y += 60
